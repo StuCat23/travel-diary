@@ -1,0 +1,19 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Entry {
+  id        String   @id @default(cuid())
+  title     String
+  notes     String?
+  location  String?
+  lat       Float?
+  lng       Float?
+  date      DateTime?
+  createdAt DateTime @default(now())
+}
